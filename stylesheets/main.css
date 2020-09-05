@@ -1,21 +1,24 @@
-#container {
-    background-color:#232323;
+.container {
+    background-color:#f6f5f5;
 }
 
-.title {
+.titulo {
     text-align: center;
-    color: #EEEEEE;
+    color: #00334e;
     margin: 20px 0 0 0;
 }
 
 hr {
-    color: #FF0000;
-    margin: 20px 300px;
+    background-color: #ee6f57;
 }
 
 p {
-    color: #EEEEEE;
-    font-weight: bold;
-    margin: 10px 300px;
+    color: #00334e;
+    text-align: justify;
     font-size: large;
+}
+
+h4, h5 {
+    color: #00334e;
+    font-weight: bold;
 }
