@@ -22,3 +22,12 @@ h4, h5 {
     color: #00334e;
     font-weight: bold;
 }
+
+#aExp:hover, #aEdu:hover {
+    background-color: #636668;
+}
+
+
+#navigation {
+    text-align: left;
+}

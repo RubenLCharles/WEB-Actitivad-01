@@ -3,17 +3,20 @@
 <head>
     <meta charset=utf-8 />
     <title>Mat: 9291</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript" src="./script/script.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./stylesheets/main.css">
+    
 </head>
 
-<body class="container">
+<body class="container" onload=main()>
 
     <div class="row">
-        <div class="col-sm-4" style="background-color:lightslategray">
-            <h1>Espacio para Foto</h1>
+        <div class="col-sm-3" style="text-align:center">
+            <img src="assets/Foto.png" width="225px">
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <h1 class="titulo">Rubén Alejandro López Charles</h1>
             <h5 class="titulo">Web Developer</h5>
             <hr>
@@ -21,34 +24,68 @@
             <p><b>Nombre: </b> Rubén Alejandro López Charles. <br>
             <b>E-Mail: </b>RubenLCharles@hotmail.com<br>
             <b>Location: Monterrey, NL</b></p> 
-            
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-secondary active">
-                  <input type="radio" name="options" id="option1" checked> Experience
-                </label>
-                <label class="btn btn-secondary">
-                  <input type="radio" name="options" id="option2"> Education 
-                </label>
-            </div>
         </div>
-          
     </div>
+
+    <nav id="navigation" class="sticky-top navbar-dark bg-dark container-fluid" >
+        <button id="aExp" class="navbar-brand btn">Experience</button>
+        <button id="aEdu" class="navbar-brand btn">Education</button>
+    </nav>
+
     <br>
+
     <div class="row">
-        <div class="col-sm-9">
+        <div id="exp" class="col-sm-9">
             <h4>- EXPERIENCE -</h4>
-            <H5>Point 1</H5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <h5>Point 2</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <H5>FRONT-END DEVELOPER • Tecnológico de Monterrey </H5>
+            <h5 style="color:lightslategray">January 2020 – Present</h5>
+            <p>Worked alongside a team of five to redesign and build the site that is used by teachers and collaborators. Duties also include managing employees via SAP and mantaining a site where collaborators can sign up as voluntaries for many projects the institution has to offer.</p>
+
+            <H5>FULL STACK DEVELOPER • Beautiful Patterns </H5>
+            <h5 style="color:lightslategray">January 2019 – May 2019</h5>
+            <p>Worked alongside a team of four to develop a website for a summer course in which students could register themselves, find information and receive notifications from the teachers. Duties included designing the UI, building up the front-end and implementing a database.</p>
+
+            <H5>FRONT-END DEVELOPER • Ternium </H5>
+            <H5 style="color:lightslategray">August 2018 – December 2018</H5>
+            <p>Worked alongside Ternium and a team of three to develop a system from the ground up to track the location of employees and their schedules among other features. Duties Included designing the UI and building up the front-end.</p>
+            
+
         </div>
+        <div id="edu" class="col-sm-9" style="display:none">
+            <h4>- EDUCATION -</h4>
+
+            <H5>ITESM • Engineer in Computer Science (ITC) </H5>
+            <h5 style="color:lightslategray">August 2015 – Present</h5>
+
+            <br>
+            <H5>UDEMY • Certification in UX Design</H5>
+            <h5 style="color:lightslategray">July 2019</h5>
+        </div>
+
         <div class="col-sm-3">
             <h4>- SKILLS -</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <ul id="skills">
+                <li v-for="item in items">
+                    {{ item.mensaje }}
+                </li>
+            </ul>
+
+            <h4>- TOOLS -</h4>
+            <ul id="tools">
+                <li v-for="item in items">
+                    {{ item.mensaje }}
+                </li>
+            </ul>
+
+            <h4>- LANGUAGES -</h4>
+            <ul id="lang">
+                <li v-for="item in items">
+                    {{ item.mensaje }}
+                </li>
+            </ul>
         </div>
+
     </div>
-    
-
 </body>
-
 </html>
