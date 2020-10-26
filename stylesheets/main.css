@@ -27,6 +27,11 @@ h4, h5 {
     background-color: #636668;
 }
 
+#aExp, #aEdu {
+    margin: 5px 0px;
+    background-color: #555555;
+}
+
 
 #navigation {
     text-align: left;
