@@ -42,7 +42,7 @@ function main(){
             { mensaje: 'JavaScript' },
             { mensaje: 'BootStrap'},
             { mensaje: 'C++'},
-            { mensaje: 'Switf'},
+            { mensaje: 'Swift'},
             { mensaje: 'C#'}
           ]
         }
