@@ -26,20 +26,8 @@ function toggleAbout() {
         about.style.display = "block";
 }
 
-function main(){
 
-    const MongoClient = require('mongodb').MongoClient;
-    const uri = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.mwisj.mongodb.net/sample_restaurants?retryWrites=true&w=majority";
-    
-    MongoClient.connect(uri, function(err, db) {
-        if (err) throw err;
-        var dbo = db.db("sample_restaurants");
-        dbo.collection("restaurants").findOne({}, function(err, result) {
-          if (err) throw err;
-          console.log(result.name);
-          db.close();
-        });
-      }); 
+function main(){
 
     
     var aEdu = document.getElementById("aEdu");
@@ -69,6 +57,8 @@ function main(){
         },
         false
     );
+
+
 
     var skills = new Vue({
         el: '#skills',
