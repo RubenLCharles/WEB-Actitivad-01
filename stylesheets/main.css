@@ -12,7 +12,7 @@ hr {
     background-color: #ee6f57;
 }
 
-p {
+p, #likes {
     color: #00334e;
     text-align: justify;
     font-size: large;
@@ -23,11 +23,11 @@ h4, h5 {
     font-weight: bold;
 }
 
-#aExp:hover, #aEdu:hover {
+#aExp:hover, #aEdu:hover, #aBout:hover {
     background-color: #636668;
 }
 
-#aExp, #aEdu {
+#aExp, #aEdu, #aBout {
     margin: 5px 0px;
     background-color: #555555;
 }

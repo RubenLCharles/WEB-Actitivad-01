@@ -38,6 +38,7 @@
     <nav id="navigation" class="sticky-top navbar-dark bg-dark container-fluid rounded" >
         <button id="aExp" class="navbar-brand btn">Experience</button>
         <button id="aEdu" class="navbar-brand btn">Education</button>
+        <button id="aBout" class="navbar-brand btn">About Me</button>
     </nav>
 
     <br>
@@ -63,12 +64,35 @@
         <div id="edu" class="col-sm-9" style="display:none">
             <h4>- EDUCATION -</h4>
 
-            <H5>ITESM • Engineer in Computer Science (ITC) </H5>
-            <h5 style="color:lightslategray">August 2015 – Present</h5>
-
-            <br>
             <H5>UDEMY • Certification in UX Design</H5>
             <h5 style="color:lightslategray">July 2019</h5>
+
+            <br>
+            <H5>ITESM • Engineer in Computer Science (ITC) </H5>
+            <h5 style="color:lightslategray">August 2015 – Present</h5>
+            
+        </div>
+
+        <div id="aboutme" class="col-sm-9" style="display:none">
+            <h4>- ABOUT ME -</h4>
+
+            <p>Hi, Thanks for checking out my CV!
+                I'm a Mexican student pursuing a Major in Computer Science.
+                I like a lot of things, some of them are:      
+            </p>
+
+            <ul id="likes">
+                <li v-for="item in items">
+                    {{ item.mensaje }}
+                </li>
+            </ul>
+
+            <p>Professionally speaking, I'm currently trying to improve my skills as a Web Developer. I enjoy developing things and I hope to be useful for a company with some teamwork.
+                See you around!
+            </p>
+
+            <img src="assets/link-ocarina.gif" class=" rounded-circle" width="200px" >
+
         </div>
 
         <div class="col-sm-3">
