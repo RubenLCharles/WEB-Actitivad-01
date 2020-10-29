@@ -1,0 +1,25 @@
+{
+  "name": "web-actitivad-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RubenLCharles/WEB-Actitivad-01.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RubenLCharles/WEB-Actitivad-01/issues"
+  },
+  "homepage": "https://github.com/RubenLCharles/WEB-Actitivad-01#readme"
+}

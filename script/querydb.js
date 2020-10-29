@@ -1,25 +1,35 @@
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
-function showHobbie() {    
-    MongoClient.connect(url, function(err, db) {
+/*let btnHob = document.getElementById("btnHob");
+
+function showHobbie(){*/
+  const mongo = require('mongodb');
+
+  const MongoClient = mongo.MongoClient;
+
+  const url = 'mongodb://localhost:27017';
+
+  MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
+
       if (err) throw err;
-      var dbo = db.db("mydb");
-      dbo.collection("hobbies").findOne({}, function(err, result) {
-        if (err) throw err;
-        console.log(result.name);
-        db.close();
+
+      const db = client.db("mydb");
+
+      db.collection('hobbies').find({}).toArray().then((docs) => {
+
+          console.log(docs);
+      }).catch((err) => {
+
+          console.log(err);
+      }).finally(() => {
+
+          client.close();
       });
-    }); 
+  });
+/*}
 
-}
-
-var btnHob = document.getElementById("btnHob");
-btnHob.addEventListener (
-    "click",
-    function() {
-        showHobbie();
-    },
-    false
-)
-
-
+btnHob.addEventListener(
+  "click",
+  function(){
+    showHobbie();
+  },
+  false
+); */
