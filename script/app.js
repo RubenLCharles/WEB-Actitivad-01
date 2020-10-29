@@ -1,27 +1,90 @@
 // init project
-const express = require('express'); // the library we will use to handle requests. import it here
+const express = require("express"); // the library we will use to handle requests
+const mongodb = require("mongodb"); // load mongodb
+
+const port = 4567; // port to listen on
+
 const app = express(); // instantiate express
-app.use(require("cors")()) // allow Cross-domain requests 
-app.use(require('body-parser').json()) // When someone sends something to the server, we can recieve it in JSON format
+app.use(require("cors")()); // allow Cross-domain requests
+app.use(require("body-parser").json()); // automatically parses request data to JSON
 
-// base route. Responds to GET requests to the root route ('/')
-app.get("/", (req, res) => {
-  res.send("Home sweet home 🏚") // always responds with the string "TODO"
-});
+// make sure in the free tier of MongoDB atlas when connecting, to
+// select version 2.2.* as the node.js driver instead of the default 3.0
+// put your URI HERE ⬇
+const uri = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.mwisj.mongodb.net/mydb?retryWrites=true&w=majority"; // put your URI HERE
 
-// base route. Responds to POST requests to the root route
-app.post("/", (req, res) => {
-  res.send("Sending it through the post 📬") // always responds with the string "TODO"
-});
+// connect to your MongoDB database through your URI. 
+// The connect() function takes a uri and callback function as arguments.
+mongodb.MongoClient.connect(uri, (err, db) => {
+  // connect to your specific collection (a.k.a database) that you specified at the end of your URI (/database)
+  const collection = db.collection("hobbies");
 
-// Responds to PUT requests to the root route
-app.put("/", (req, res) => {
-  res.send("Don't you dare put me up to this.") // always responds with the string "TODO"
-});
+  // Responds to GET requests with the route parameter being the username.
+  // Returns with the JSON data about the user (if there is a user with that username)
+  // Example request: https://mynodeserver.com/myusername
+  app.get("/:user", (req, res) => {
+    // search the database (collection) for all users with the `user` field being the `user` route paramter
+    collection.find({ user: req.params.user }).toArray((err, docs) => {
+      if (err) {
+        // if an error happens
+        res.send("Error in GET req.");
+      } else {
+        // if all works
+        res.send(docs); // send back all users found with the matching username
+      }
+    });
+  });
 
+  // Responds to POST requests with the route parameter being the username.
+  // Creates a new user in the collection with the `user` parameter and the JSON sent with the req in the `body` property
+  // Example request: https://mynodeserver.com/myNEWusername
+  app.post("/:user", (req, res) => {
+    // inserts a new document in the database (collection)
+    collection.insertOne(
+      { ...req.body, user: req.params.user }, // this is one object to insert. `requst.params` gets the url req parameters
+      (err, r) => {
+        if (err) {
+          res.send("Error in POST req.");
+        } else {
+          res.send("Information inserted");
+        }
+      }
+    );
+  });
 
-// listen for requests on port 4567
-const port = 4567;
-var listener = app.listen(port, () => {
-  console.log('Your app is listening on port ' + listener.address().port);
+  // this doesn't create a new user but rather updates an existing one by the user name
+  // a request looks like this: `https://nodeserver.com/username23` plus the associated JSON data sent in
+  // the `body` property of the PUT request
+  app.put("/:user", (req, res) => {
+    collection.find({ user: req.params.user }).toArray((err, docs) => {
+      if (err) {
+        // if and error occurs in finding a user to update
+        res.send("Error in PUT req.");
+      } else {
+        collection.updateOne(
+          { user: req.params.user }, // if the username is the same, update the user
+          { $set: { ...req.body, user: req.params.user } }, // update user data
+          (err, r) => {
+            if (err) {
+              // if error occurs in actually updating the data in the database
+              console.log("Error in updating database information");
+            } else {
+              // everything works! (hopefully)
+              res.send("Updated successfully");
+            }
+          }
+        );
+      }
+    });
+
+    // if someone goes to base route, send back they are home.
+    app.get("/", (req, res) => {
+      res.send("You are home 🏚.");
+    });
+  });
+
+  // listen for requests
+  var listener = app.listen(port, () => {
+    console.log("Your app is listening on port " + listener.address().port);
+  });
 });
